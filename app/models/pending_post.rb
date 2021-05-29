@@ -23,18 +23,18 @@ class PendingPost < ApplicationRecord
   end
 
   def create_post!
-    if Post.exists?(uid: post_attributes["identifier"])
+    if Post.exists?(uid: post_attributes["uid"])
       destroy!
     else
       transaction do
         Post.create!(
-          source: source,
-          title: post_attributes["title"],
-          url: post_attributes["url"],
           author: post_attributes["author"],
           published_at: post_attributes["published"],
-          uid: post_attributes["identifier"],
-          summary: post_attributes["summary"]
+          summary: post_attributes["summary"],
+          source: source,
+          title: post_attributes["title"],
+          uid: post_attributes["uid"],
+          url: post_attributes["url"]
         )
         destroy!
       end

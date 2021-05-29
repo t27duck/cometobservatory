@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Source < ApplicationRecord
+  COVERAGES = ["Nintendo", "Industry-Wide"].freeze
   SOURCE_CLASSES = ["RssFeed"].freeze
 
   has_many :pending_posts, dependent: :destroy
@@ -8,6 +9,7 @@ class Source < ApplicationRecord
 
   validates :name, :url, presence: true
   validates :source_class, presence: true, inclusion: { in: SOURCE_CLASSES }
+  validates :coverage, presence: true, inclusion: { in: COVERAGES }
 
   def create_pending_posts
     case source_class

@@ -114,7 +114,8 @@ CREATE TABLE public.sources (
     image_filename character varying,
     source_class character varying NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    coverage character varying NOT NULL
 );
 
 
@@ -244,6 +245,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210520203238'),
 ('20210520203424'),
-('20210525214054');
+('20210525214054'),
+('20210529195638');
 
 

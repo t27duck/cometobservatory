@@ -39,7 +39,9 @@ class RssFeed
 
     uri = URI.parse(request_url)
     req = Net::HTTP::Get.new(uri.request_uri)
-    req["Accept-Language"] = "*"
+    req["Accept-Language"] = "en-US,en;q=0.5"
+    req["Accept"] = "application/rss+xml;q=0.9,*/*;q=0.8"
+    req["Accept"] = "CometObservatory.net (Pretend this is Linux Chrome or something)"
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = (uri.scheme == "https")
     http.open_timeout = 5
