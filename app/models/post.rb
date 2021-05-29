@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   belongs_to :source
 
   validates :title, :url, presence: true
-  validates :uid, presence: true, uniqueness: true
+  validates :uid, presence: true, uniqueness: { scope: :source_id }
 end

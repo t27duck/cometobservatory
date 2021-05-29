@@ -214,10 +214,10 @@ CREATE INDEX index_posts_on_source_id ON public.posts USING btree (source_id);
 
 
 --
--- Name: index_posts_on_uid; Type: INDEX; Schema: public; Owner: -
+-- Name: index_posts_on_uid_and_source_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_posts_on_uid ON public.posts USING btree (uid);
+CREATE UNIQUE INDEX index_posts_on_uid_and_source_id ON public.posts USING btree (uid, source_id);
 
 
 --
@@ -246,6 +246,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210520203238'),
 ('20210520203424'),
 ('20210525214054'),
-('20210529195638');
+('20210529195638'),
+('20210529220308');
 
 

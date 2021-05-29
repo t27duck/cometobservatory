@@ -5,7 +5,7 @@ class PendingPost < ApplicationRecord
 
   def self.create_from_feedjira(source, entry)
     identifier = entry.entry_id || entry.url
-    return if Post.exists?(uid: identifier)
+    return if Post.exists?(uid: identifier, source_id: source.id)
     return if entry.url.blank?
 
     title = entry.title.presence || entry.url
@@ -23,7 +23,7 @@ class PendingPost < ApplicationRecord
   end
 
   def create_post!
-    if Post.exists?(uid: post_attributes["uid"])
+    if Post.exists?(uid: post_attributes["uid"], source_id: source.id)
       destroy!
     else
       transaction do
