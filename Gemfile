@@ -52,4 +52,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'feedjira'
+gem 'pagy'
 gem 'turbo-rails'
