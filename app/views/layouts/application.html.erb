@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-image: url(<%= asset_path("stars.png") %>); background-color: #122153;">
     <%= yield %>
   </body>
 </html>

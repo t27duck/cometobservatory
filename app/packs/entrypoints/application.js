@@ -9,3 +9,4 @@ import { Turbo } from "@hotwired/turbo-rails"
 Rails.start()
 
 import "stylesheets/application"
+import "controllers"
