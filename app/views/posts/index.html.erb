@@ -1,35 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Source</th>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Uid</th>
-      <th>Published at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<%= turbo_frame_tag "posts-page-#{@page}", target: "_top" do %>
+  <div class="flex flex-wrap justify-center">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.source_id %></td>
-        <td><%= post.title %></td>
-        <td><%= post.url %></td>
-        <td><%= post.uid %></td>
-        <td><%= post.published_at %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <section class="w-full lg:w-10/12 flex-none container shadow-xl rounded my-3 mx-2 py-2 px-2 sm:px-6 lg:px-4 bg-gray-200 hover:bg-gray-300 ring-1 ring-indigo-600">
+        <%= link_to post.url, rel: "noopener", target: "_blank", class: "flex h-auto" do %>
+          <div class="inline-block align-middle my-auto flex-shrink-0 mr-3">
+            <%= image_tag "sources/#{post.source.image_filename}", alt: post.source.name, class: "h-8 w-8 lg:h-12 lg:w-12 rounded-full ring-1 ring-indigo-600" %>
+          </div>
+          <div>
+            <div class="text-lg lg:text-xl"><%= post.title %></div>
+            <div class="text-sm italic">
+              <%= post.source.name %>
+              <% if post.author %>/ <%= post.author %><% end %>
+            </div>
+          </div>
+        <% end %>
+      </section>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+  <% if pagy_next_url(@pagy) %>
+    <%= turbo_frame_tag "posts-page-#{@page + 1}", src: pagy_next_url(@pagy), loading: "lazy", target: "_top" do %>
+      <div class="w-full text-center">
+          <div data-controller="toggle-class">
+            <%= link_to "Explore More...", pagy_next_url(@pagy), class: "button-primary text-center", data: {
+              "action" => "click->toggle-class#toggle",
+              "toggle-class-target" => "element",
+              "turbo-frame" => "posts-page-#{@page + 1}" }
+            %>
+            <a data-toggle-class-target="element" class="hidden button-primary text-center">Fetching More...</a>
+          </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

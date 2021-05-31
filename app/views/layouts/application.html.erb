@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-preview">
     <title>The Comet Observatory</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <%= csrf_meta_tags %>
@@ -76,7 +77,7 @@
                     </button>
                   </div>
                   <div
-                    class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    class="hidden origin-top-right absolute right-0 mt-2 w-96 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu"
@@ -87,10 +88,28 @@
                     data-transition-leave="transition ease-in duration-75"
                     data-transition-leave-start="transform opacity-100 scale-100"
                     data-transition-leave-end="transform opacity-0 scale-95"
-                    tabindex="-1">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                    tabindex="-1"
+                  >
+                    <%= form_with url: posts_path, method: :post do %>
+                      <div class="flex px-2">
+                        <% @grouped_sources.each do |coverage, sources| %>
+                          <div class="w-1/2">
+                            <div class="font-bold"><%= coverage %> News</div>
+                            <div class="text-sm">
+                              <% sources.each do |source| %>
+                                <div class="my-1">
+                                  <%= label_tag "picker-#{source.name.parameterize}", class: "block text-gray-700" do %>
+                                    <%= check_box_tag "source_ids[]", source.id, source_id_selected(source), id: "picker-#{source.name.parameterize}", tabindex: "-1" %>
+                                    <%= source.name %>
+                                  <% end %>
+                                </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                      <%= submit_tag "Apply", class: "float-right mr-2 my-2 justify-center py-1 px-3 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -108,11 +127,26 @@
           </div>
           <div class="pt-4 pb-3 border-t border-indigo-800">
             <div class="px-2 space-y-1">
-              <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-200 hover:text-indigo-100 hover:bg-indigo-600">Your Profile</a>
-
-              <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-200 hover:text-indigo-100 hover:bg-indigo-600">Settings</a>
-
-              <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-200 hover:text-indigo-100 hover:bg-indigo-600">Sign out</a>
+               <%= form_with url: posts_path, method: :post do %>
+                <div class="flex px-2">
+                  <% @grouped_sources.each do |coverage, sources| %>
+                    <div class="w-1/2">
+                      <div class="font-bold text-indigo-200"><%= coverage %> News</div>
+                      <div class="text-sm">
+                        <% sources.each do |source| %>
+                          <div class="my-1">
+                            <%= label_tag "mobile-picker-#{source.name.parameterize}", class: "block text-indigo-200 hover:text-indigo-100 hover:bg-indigo-600" do %>
+                              <%= check_box_tag "source_ids[]", source.id, source_id_selected(source), id: "mobile-picker-#{source.name.parameterize}", tabindex: "-1" %>
+                              <%= source.name %>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <%= submit_tag "Apply", class: "float-right mr-2 my-2 justify-center py-1 px-3 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+              <% end %>
             </div>
           </div>
         </div>

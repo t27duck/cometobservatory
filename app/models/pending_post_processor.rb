@@ -16,7 +16,7 @@ class PendingPostProcessor
   private
 
   def run_through
-    @source_ids.shuffle
+    @source_ids.shuffle!
 
     @source_ids.dup.each do |source_id|
       pending_post = PendingPost.where(source_id: source_id).first
