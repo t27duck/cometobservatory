@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-cache-control" content="no-preview">
-    <title>The Comet Observatory</title>
+    <title>The Comet Observatory | Nintendo and Industry News Headlines</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -24,6 +24,10 @@
               <div class="flex-shrink-0">
                 <%= link_to image_tag("luma-icon.png", alt: "Home", class: "h-8 w-auto"), root_path %>
               </div>
+              <div class="ml-2 text-indigo-200">
+                <%= link_to "The Comet Observatory", root_path, class: "font-bold" %>
+                <div class="text-xs"><%= SUBTITLES.sample %></div>
+              </div>
             </div>
 
             <!-- Search section -->
@@ -38,7 +42,7 @@
                     </svg>
                   </div>
                   <%= form_with url: root_path, method: :get do %>
-                    <%= text_field_tag "search", params[:search], class: "block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-indigo-600 bg-opacity-25 text-indigo-100 placeholder-indigo-200 focus:outline-none focus:bg-white focus:ring-0 focus:placeholder-gray-400 focus:text-gray-900 sm:text-sm", placeholder: "Search Post Titles...", type: "search" %>
+                    <%= text_field_tag "search", params[:search], class: "block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-indigo-600 bg-opacity-25 text-indigo-100 placeholder-indigo-200 focus:outline-none focus:bg-white focus:ring-0 focus:placeholder-gray-400 focus:text-gray-900 sm:text-sm", placeholder: "Search...", type: "search" %>
                   <% end %>
                 </div>
               </div>

@@ -7,7 +7,7 @@
             <%= image_tag "sources/#{post.source.image_filename}", alt: post.source.name, class: "h-8 w-8 lg:h-12 lg:w-12 rounded-full ring-1 ring-indigo-600" %>
           </div>
           <div>
-            <div class="text-lg lg:text-xl"><%= post.title %></div>
+            <div class="text-lg lg:text-xl font-semibold"><%= post.title %></div>
             <div class="text-sm italic">
               <%= post.source.name %>
               <% if post.author %>/ <%= post.author %><% end %>
@@ -22,12 +22,15 @@
     <%= turbo_frame_tag "posts-page-#{@page + 1}", src: pagy_next_url(@pagy), loading: "lazy", target: "_top" do %>
       <div class="w-full text-center">
           <div data-controller="toggle-class">
-            <%= link_to "Explore More...", pagy_next_url(@pagy), class: "button-primary text-center", data: {
-              "action" => "click->toggle-class#toggle",
-              "toggle-class-target" => "element",
-              "turbo-frame" => "posts-page-#{@page + 1}" }
+            <%= link_to "Fetch More...", pagy_next_url(@pagy),
+              class: "w-full px-3 py-2 border border-transparent rounded-md leading-5 bg-indigo-600 bg-opacity-25 text-indigo-100 placeholder-indigo-200 focus:outline-none focus:bg-white focus:ring-0 focus:placeholder-gray-400 focus:text-gray-900 sm:text-sm text-center",
+              data: {
+                "action" => "click->toggle-class#toggle",
+                "toggle-class-target" => "element",
+                "turbo-frame" => "posts-page-#{@page + 1}"
+              }
             %>
-            <a data-toggle-class-target="element" class="hidden button-primary text-center">Fetching More...</a>
+            <a data-toggle-class-target="element" class="hidden w-full pr-3 py-2 border border-transparent rounded-md leading-5 bg-indigo-600 bg-opacity-25 text-indigo-100 placeholder-indigo-200 focus:outline-none focus:bg-white focus:ring-0 focus:placeholder-gray-400 focus:text-gray-900 sm:text-smutton-primary text-center">Fetching More...</a>
           </div>
       </div>
     <% end %>
