@@ -9,6 +9,21 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: posts_search_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.posts_search_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  NEW.searchable_tsearch :=
+    SETWEIGHT(to_tsvector('pg_catalog.english', COALESCE(NEW.title, '')), 'A');
+  RETURN NEW;
+END
+$$;
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -71,7 +86,8 @@ CREATE TABLE public.posts (
     uid character varying NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    searchable_tsearch tsvector
 );
 
 
@@ -207,6 +223,13 @@ CREATE INDEX index_pending_posts_on_source_id ON public.pending_posts USING btre
 
 
 --
+-- Name: index_posts_on_searchable_tsearch; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_searchable_tsearch ON public.posts USING gin (searchable_tsearch) WITH (gin_pending_list_limit='128');
+
+
+--
 -- Name: index_posts_on_source_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -218,6 +241,13 @@ CREATE INDEX index_posts_on_source_id ON public.posts USING btree (source_id);
 --
 
 CREATE UNIQUE INDEX index_posts_on_uid_and_source_id ON public.posts USING btree (uid, source_id);
+
+
+--
+-- Name: posts posts_search_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER posts_search_trigger BEFORE INSERT OR UPDATE ON public.posts FOR EACH ROW EXECUTE FUNCTION public.posts_search_trigger();
 
 
 --
@@ -247,6 +277,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210520203424'),
 ('20210525214054'),
 ('20210529195638'),
-('20210529220308');
+('20210529220308'),
+('20210531025322'),
+('20210531025415');
 
 

@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:source).order(created_at: :desc)
     @posts = @posts.where(source_id: JSON.parse(cookies.signed[:source_ids])) if cookies.signed[:source_ids].present?
+    @posts = @posts.fulltext_search(params[:search]) if params[:search].present?
     @page = (params[:page] || 1).to_i
     @pagy, @posts = pagy_countless(@posts, items: 20)
     @stored_source_ids = cookies.signed[:source_ids].present? ? JSON.parse(cookies.signed[:source_ids]) : []
