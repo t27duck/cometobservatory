@@ -1,0 +1,23 @@
+{
+  "short_name": "Comet Observatory",
+  "name": "Comet Observatory",
+  "description": "Nintendo and Industry-Wide Headlines",
+  "icons": [
+    {
+      "src": "/service-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/service-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#3C679A",
+  "display": "standalone",
+  "theme_color": "#3C679A"
+}
