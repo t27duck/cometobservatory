@@ -82,5 +82,3 @@ test:
 production:
   <<: *default
   database: observatory_production
-  username: observatory
-  password: <%= ENV['OBSERVATORY_DATABASE_PASSWORD'] %>
