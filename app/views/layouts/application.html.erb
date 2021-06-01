@@ -68,9 +68,9 @@
               <div class="hidden lg:block lg:w-80">
                 <div class="flex items-center justify-end">
                   <div class="flex">
-                    <%= link_to "What?", "#", class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
+                    <%= link_to "What?", what_path, class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
                     <%= link_to "Discord", "#", class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
-                    <%= link_to "Privacy", "#", class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
+                    <%= link_to "Privacy", privacy_policy_path, class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
                   </div>
                   <!-- Profile dropdown -->
                   <div class="ml-4 relative flex-shrink-0">
@@ -131,9 +131,9 @@
           <!-- Mobile menu, show/hide based on menu state. -->
           <div class="hidden" id="mobile-menu" data-navbar-target="mobileMenuButton">
             <div class="px-2 pt-2 pb-3 space-y-1">
-              <a href="#" class="text-indigo-200 hover:text-indigo-100 hover:bg-indigo-900 block px-3 py-2 rounded-md text-base font-medium">What?</a>
-              <a href="#" class="text-indigo-200 hover:text-indigo-100 hover:bg-indigo-900 block px-3 py-2 rounded-md text-base font-medium">Discord</a>
-              <a href="#" class="text-indigo-200 hover:text-indigo-100 hover:bg-indigo-900 block px-3 py-2 rounded-md text-base font-medium">Privacy</a>
+              <%= link_to "What?", what_path, class: "text-indigo-200 hover:text-indigo-100 hover:bg-indigo-900 block px-3 py-2 rounded-md text-base font-medium" %>
+              <%= link_to "Discord", "#", class: "text-indigo-200 hover:text-indigo-100 hover:bg-indigo-900 block px-3 py-2 rounded-md text-base font-medium" %>
+              <%= link_to "Privacy", privacy_policy_path, class: "text-indigo-200 hover:text-indigo-100 hover:bg-indigo-900 block px-3 py-2 rounded-md text-base font-medium" %>
             </div>
             <div class="pt-4 pb-3 border-t border-indigo-800">
               <div class="px-2 space-y-1">
