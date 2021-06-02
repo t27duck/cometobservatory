@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-cache-control" content="no-preview">
     <meta name="theme-color" content="#3C679A" />
-    <meta name="description" content="Nintendo and Industry-Wide News Headlines">
-    <title>The Comet Observatory | Nintendo and Industry News Headlines</title>
+    <meta name="description" content="Nintendo and video game industry news headlines updated frequently in one easy to digest feed.">
+    <meta name="robots" content="NOODP">
+    <meta name="keywords" content="Nintendo, Video Games, Switch, Rosalina, Mario, Luma, Zelda, Smash Brothers" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="msapplication-config" content="none"/>
+    <meta name="copyright" content="Copyright <%= Time.now.utc.strftime("%Y") %>" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="The Comet Observatory" />
+    <meta property="og:title" content="The Comet Observatory | Nintendo and Video Game Industry News Headlines" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url.force_encoding("UTF-8") %>" />
+    <meta property="og:image" content="<%= asset_url("rosalina-full.png") %>" />
+    <meta name="twitter:image" content="https://gonintendo.com/images/thumbnails/gonintendo.png" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="<%= request.original_url.force_encoding("UTF-8") %>" />
+    <meta name="twitter:title" content="The Comet Observatory | Nintendo and Video Game Industry News Headlines" />
+    <title>The Comet Observatory | Nintendo and Video Game Industry News Headlines</title>
+    <link rel="image_src" href="<%= asset_url("rosalina-full.png") %>" />
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <%= csrf_meta_tags %>
@@ -40,7 +56,6 @@
                   <label for="search" class="sr-only">Search post titles</label>
                   <div class="relative text-indigo-200 focus-within:text-gray-400">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <!-- Heroicon name: solid/search -->
                       <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                       </svg>
@@ -71,7 +86,7 @@
                     <%= link_to "What?", what_path, class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
                     <%= link_to "Privacy", privacy_policy_path, class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
                   </div>
-                  <!-- Profile dropdown -->
+                  <!-- Dropdown -->
                   <div class="ml-4 relative flex-shrink-0">
                     <div>
                       <button
