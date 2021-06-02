@@ -14,6 +14,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="The Comet Observatory" />
     <meta property="og:title" content="The Comet Observatory | Nintendo and Video Game Industry News Headlines" />
+    <meta property="og:description" content="Nintendo and video game industry news headlines updated frequently in one easy to digest feed.">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url.force_encoding("UTF-8") %>" />
     <meta property="og:image" content="<%= asset_url("rosalina-full.png") %>" />
@@ -24,6 +25,7 @@
     <title>The Comet Observatory | Nintendo and Video Game Industry News Headlines</title>
     <link rel="image_src" href="<%= asset_url("rosalina-full.png") %>" />
     <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="<%= asset_path("luma-icon.png") %>" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
