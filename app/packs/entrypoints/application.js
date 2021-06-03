@@ -10,6 +10,7 @@ Rails.start()
 
 import "stylesheets/application"
 import "controllers"
+import gtag from "analytics/google_tag"
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./serviceWorker.js')

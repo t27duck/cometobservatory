@@ -32,6 +32,11 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+
+    <% if Rails.env.production? %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=G-ZLT1Q2F87E"></script>
+    <% end %>
   </head>
 
   <body style="background-image: url(<%= asset_path("stars.png") %>); background-color: #122153;">
