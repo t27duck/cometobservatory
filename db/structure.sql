@@ -131,7 +131,10 @@ CREATE TABLE public.sources (
     source_class character varying NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    coverage character varying NOT NULL
+    coverage character varying NOT NULL,
+    active boolean DEFAULT true NOT NULL,
+    site_visible boolean DEFAULT true NOT NULL,
+    post_to_discord boolean DEFAULT true NOT NULL
 );
 
 
@@ -279,6 +282,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210529195638'),
 ('20210529220308'),
 ('20210531025322'),
-('20210531025415');
+('20210531025415'),
+('20210603010314');
 
 
