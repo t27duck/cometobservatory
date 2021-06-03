@@ -7,7 +7,7 @@ namespace :observatory do
   end
 
   task fetch_pending: :environment do
-    Source.find_each do |source|
+    Source.where(active: true).find_each do |source|
       begin
         source.create_pending_posts
       rescue => e
