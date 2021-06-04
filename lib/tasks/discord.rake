@@ -46,6 +46,7 @@ namespace :discord do
           )
         end
       end
+      post.update(posted_to_discord_at: Time.now.utc)
     end
   end
 end
