@@ -41,6 +41,19 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: code_lists; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.code_lists (
+    discord_id character varying NOT NULL,
+    public boolean DEFAULT false NOT NULL,
+    system_codes jsonb DEFAULT '{}'::jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: pending_posts; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -187,6 +200,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: code_lists code_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.code_lists
+    ADD CONSTRAINT code_lists_pkey PRIMARY KEY (discord_id);
+
+
+--
 -- Name: pending_posts pending_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -283,6 +304,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210529220308'),
 ('20210531025322'),
 ('20210531025415'),
-('20210603010314');
+('20210603010314'),
+('20210603012316');
 
 
