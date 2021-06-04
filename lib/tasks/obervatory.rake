@@ -4,6 +4,7 @@ namespace :observatory do
   task fetch: :environment do
     Rake::Task["observatory:fetch_pending"].invoke
     Rake::Task["observatory:process_pending"].invoke
+    Rake::Task["discord:post_to_webhook"].invoke
   end
 
   task fetch_pending: :environment do

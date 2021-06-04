@@ -100,7 +100,8 @@ CREATE TABLE public.posts (
     published_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    searchable_tsearch tsvector
+    searchable_tsearch tsvector,
+    posted_to_discord_at timestamp without time zone
 );
 
 
@@ -305,6 +306,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210531025322'),
 ('20210531025415'),
 ('20210603010314'),
-('20210603012316');
+('20210603012316'),
+('20210604214329'),
+('20210604214428');
 
 
