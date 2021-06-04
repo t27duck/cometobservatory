@@ -3,7 +3,7 @@
 require "yaml"
 
 class Pokedex
-  IMG_URL_BASE = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/"
+  IMG_URL_BASE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   def self.data
     @data ||= YAML.load_file(Rails.root.join("db", "data", "pokemon.yml"))
