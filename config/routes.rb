@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "/what", to: "pages#what", as: :what
   get "/privacy-policy", to: "pages#privacy", as: :privacy_policy
-
+  resources :feeds, only: [:index, :show]
   resources :posts, only: [:index, :create]
   root "posts#index"
 end

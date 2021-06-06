@@ -28,6 +28,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" href="<%= asset_path("luma-icon.png") %>" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for cometobservatory.net" href="<%= feed_url(id: "news", format: :xml) %>" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', 'data-turbo-track': 'reload' %>
@@ -93,6 +94,7 @@
                   <div class="flex">
                     <%= link_to "What?", what_path, class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
                     <%= link_to "Privacy", privacy_policy_path, class: "px-3 py-2 rounded-md text-sm font-medium text-indigo-200 hover:text-white" %>
+                    <%= link_to image_tag("rss-icon-64.png", alt: "Rosalina", class: "h-8 w-8 rounded-full"), feeds_path, class: "pl-3 pt-0.5" %>
                   </div>
                   <!-- Dropdown -->
                   <div class="ml-4 relative flex-shrink-0">

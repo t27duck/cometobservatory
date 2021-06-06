@@ -1,0 +1,10 @@
+<div class="privacy-policy bg-gray-200 w-full lg:w-10/12 mx-auto my-4 p-2 shadow-xl font-semibold rounded ring-indigo-600">
+  <div class="text-3xl font-bold">
+    <%= image_tag("rss-icon-64.png", alt: "Rosalina", class: "h-8 w-8 mb-2 rounded-full inline") %>
+    RSS Feeds
+  </div>
+  <div>All News: <%= link_to feed_url(id: "news", format: :xml), feed_path(id: "all", format: :xml), target: "_blank" %></div>
+  <% @sources.each do |source| %>
+    <div><%= source.name %>: <%= link_to source.url, source.url, target: "_blank" %></div>
+  <% end %>
+</div>
