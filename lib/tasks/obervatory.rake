@@ -26,14 +26,14 @@ namespace :observatory do
     next unless ENV["ROSALINA_TWITTER_CONSUMER_KEY"].present?
     next unless ENV["ROSALINA_TWITTER_CONSUMER_SECRET"].present?
     next unless ENV["ROSALINA_TWITTER_ACCESS_TOKEN"].present?
-    next unless ENV["ROSALINA_TWITTER_ACESS_TOKEN_SECRET"].present?
+    next unless ENV["ROSALINA_TWITTER_ACCESS_TOKEN_SECRET"].present?
     require "twitter"
 
     client = Twitter::REST::Client.new do |config|
       config.consumer_key         = ENV["ROSALINA_TWITTER_CONSUMER_KEY"]
       config.consumer_secret      = ENV["ROSALINA_TWITTER_CONSUMER_SECRET"]
       config.access_token         = ENV["ROSALINA_TWITTER_ACESS_TOKEN"]
-      config.access_token_secret  = ENV["ROSALINA_TWITTER_ACESS_TOKEN_SECRET"]
+      config.access_token_secret  = ENV["ROSALINA_TWITTER_ACCESS_TOKEN_SECRET"]
     end
 
     Post.joins(:source).includes(:source).where(sources: { post_to_twitter: true }, posted_to_twitter_at: nil).order("posts.created_at ASC").each do |post|
