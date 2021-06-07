@@ -59,3 +59,4 @@ gem 'turbo-rails'
 # Used by Discord tasks
 gem "discordrb",  github: "shardlab/discordrb", tag: "v3.4.2", require: false
 gem "rest-client", require: false
+gem "twitter", require: false

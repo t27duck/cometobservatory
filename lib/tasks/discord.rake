@@ -34,19 +34,23 @@ namespace :discord do
     Post.joins(:source).includes(:source).where(sources: { post_to_discord: true }, posted_to_discord_at: nil).order("posts.created_at ASC").each do |post|
       # Pause to not be throttled by Discord
       sleep 1
-      username = "New Post from #{post.source.name}"
-      client.execute do |builder|
-        builder.username = username
-        builder.add_embed do |embed|
-          embed.title = post.title
-          embed.url = post.url
-          embed.footer = Discordrb::Webhooks::EmbedFooter.new(
-            text: "posted by #{post.author.presence || 'N/A'}",
-            icon_url: "https://cometobservatory.net/images/sources/#{post.source.image_filename}"
-          )
+      begin
+        username = "New Post from #{post.source.name}"
+        client.execute do |builder|
+          builder.username = username
+          builder.add_embed do |embed|
+            embed.title = post.title
+            embed.url = post.url
+            embed.footer = Discordrb::Webhooks::EmbedFooter.new(
+              text: "posted by #{post.author.presence || 'N/A'}",
+              icon_url: "https://cometobservatory.net/images/sources/#{post.source.image_filename}"
+            )
+          end
         end
+        post.update(posted_to_discord_at: Time.now.utc)
+      rescue => e
+        Rails.logger.error("Post '#{post.id}' Failed to post to Discord: #{e.message}")
       end
-      post.update(posted_to_discord_at: Time.now.utc)
     end
   end
 end

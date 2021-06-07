@@ -101,7 +101,8 @@ CREATE TABLE public.posts (
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     searchable_tsearch tsvector,
-    posted_to_discord_at timestamp without time zone
+    posted_to_discord_at timestamp without time zone,
+    posted_to_twitter_at timestamp without time zone
 );
 
 
@@ -148,7 +149,8 @@ CREATE TABLE public.sources (
     coverage character varying NOT NULL,
     active boolean DEFAULT true NOT NULL,
     site_visible boolean DEFAULT true NOT NULL,
-    post_to_discord boolean DEFAULT true NOT NULL
+    post_to_discord boolean DEFAULT true NOT NULL,
+    post_to_twitter boolean DEFAULT true NOT NULL
 );
 
 
@@ -308,6 +310,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210603010314'),
 ('20210603012316'),
 ('20210604214329'),
-('20210604214428');
+('20210604214428'),
+('20210607211127');
 
 
