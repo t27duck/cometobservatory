@@ -13,3 +13,6 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "webpacker"
+        versions: ["5.x", "6.x"]
