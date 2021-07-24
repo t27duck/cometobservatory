@@ -1,0 +1,8 @@
+{
+  "version": "v1",
+  "packages": {
+    "@rails/webpacker": {
+      "signature": "aaec8e85c2ed1f0c229c1721457ad635"
+    }
+  }
+}
