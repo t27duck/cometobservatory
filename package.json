@@ -20,7 +20,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "4.0.0-rc.0"
+    "webpack-dev-server": "4.0.0"
   },
   "babel": {
     "presets": [
