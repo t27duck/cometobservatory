@@ -64,6 +64,10 @@ module SayingsContainer
   end
 
   command :song do |event|
-    event.respond("Let's gather 'round the chatroom and sing our chatroom song. Our C-H-A-T-R-O-O-M song. And if you don't think that we can sing it faster then you're wrong But it'll help if you just sing along!")
+    event.respond("Let's gather 'round the chatroom and sing our chatroom song. Our C-H-A-T-R-O-O-M S-O-N-G song. And if you don't think that we can sing it faster, then you're wrong. But it'll help if you just sing along!")
+  end
+  
+  command :sudo do |event|
+    event.respond("okay")
   end
 end
