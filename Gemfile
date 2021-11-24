@@ -52,7 +52,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'feedjira'
 gem 'pagy'
 gem 'pg_search'
-gem 'turbo-rails', '~> 0.8.3'
+gem 'turbo-rails', '~> 0.9.0'
 
 # Used by Discord tasks
 gem "discordrb",  github: "shardlab/discordrb", tag: "v3.4.2", require: false
