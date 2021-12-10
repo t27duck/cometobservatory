@@ -285,7 +285,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   discordrb!
   feedjira
-  jbuilder (~> 2.7)
+  jbuilder (~> 2.11)
   listen (~> 3.7)
   pagy
   pg (~> 1.1)
