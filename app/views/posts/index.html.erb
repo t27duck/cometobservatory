@@ -3,7 +3,7 @@
     <% @posts.each do |post| %>
       <section class="w-full lg:w-10/12 flex-none container shadow-xl rounded my-3 mx-2 p-2 sm:px-6 lg:px-4 bg-gray-200 hover:bg-gray-300 ring-1 ring-indigo-600">
         <%= link_to post.url, rel: "noopener", target: "_blank", class: "flex h-auto" do %>
-          <div class="inline-block align-middle my-auto flex-shrink-0 mr-3">
+          <div class="inline-block align-middle my-auto shrink-0 mr-3">
             <%= image_tag "sources/#{post.source.image_filename}", alt: post.source.name, skip_pipeline: true, class: "h-8 w-8 lg:h-12 lg:w-12 rounded-full ring-1 ring-indigo-600" %>
           </div>
           <div>

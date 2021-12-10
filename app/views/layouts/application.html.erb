@@ -46,12 +46,12 @@
     <div class="relative min-h-screen flex flex-col">
       <header>
         <!-- Navbar -->
-        <nav data-controller="navbar" class="flex-shrink-0 bg-indigo-900">
+        <nav data-controller="navbar" class="shrink-0 bg-indigo-900">
           <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
               <!-- Logo section -->
               <div class="flex items-center px-2 lg:px-0 xl:w-64">
-                <div class="flex-shrink-0">
+                <div class="shrink-0">
                   <%= link_to image_tag("luma-icon.png", alt: "Home", class: "h-8 w-auto"), root_path %>
                 </div>
                 <div class="ml-2 text-indigo-200 hidden sm:block">
@@ -99,7 +99,7 @@
                     <%= link_to image_tag("rss-icon-64.png", alt: "RSS Feeds", class: "h-8 w-8 rounded-full"), feeds_path, class: "pl-3 pt-0.5" %>
                   </div>
                   <!-- Dropdown -->
-                  <div class="ml-4 relative flex-shrink-0">
+                  <div class="ml-4 relative shrink-0">
                     <div>
                       <button
                         type="button"
@@ -120,11 +120,11 @@
                       aria-labelledby="user-menu"
                       data-navbar-target="userMenu"
                       data-transition-enter="transition ease-out duration-100"
-                      data-transition-enter-start="transform opacity-0 scale-95"
-                      data-transition-enter-end="transform opacity-100 scale-100"
+                      data-transition-enter-start="opacity-0 scale-95"
+                      data-transition-enter-end="opacity-100 scale-100"
                       data-transition-leave="transition ease-in duration-75"
-                      data-transition-leave-start="transform opacity-100 scale-100"
-                      data-transition-leave-end="transform opacity-0 scale-95"
+                      data-transition-leave-start="opacity-100 scale-100"
+                      data-transition-leave-end="opacity-0 scale-95"
                       tabindex="-1"
                     >
                       <%= form_with url: posts_path, method: :post do %>
