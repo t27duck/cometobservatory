@@ -8,7 +8,7 @@ gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.5'
 # Use SCSS for stylesheets
-# gem 'sass-rails', '>= 6'
+gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '6.0.0.rc.5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
