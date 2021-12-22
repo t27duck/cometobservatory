@@ -1,0 +1,19 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@layer components {
+  .privacy-policy {
+    div, ul {
+      @apply mt-2;
+    }
+
+    ul {
+      @apply mb-4;
+      li {
+        @apply ml-8 pl-1 pt-1;
+      }
+    }
+  }
+}

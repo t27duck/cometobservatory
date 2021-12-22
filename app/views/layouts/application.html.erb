@@ -32,8 +32,8 @@
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for cometobservatory.net" href="<%= feed_url(id: "news", format: :xml) %>" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'application', 'data-turbo-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
     <% if Rails.env.production? %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
