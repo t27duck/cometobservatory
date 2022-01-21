@@ -183,7 +183,8 @@ GEM
       racc (~> 1.4)
     opus-ruby (1.0.1)
       ffi
-    pagy (5.8.1)
+    pagy (5.9.1)
+      activesupport
     pg (1.2.3)
     pg_search (2.3.6)
       activerecord (>= 5.2)
